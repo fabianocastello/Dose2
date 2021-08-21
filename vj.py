@@ -88,8 +88,6 @@ def run():
     <p style="padding-top:0px;font-size:8px;line-height:8px"><span style="font-size:8px;line-height:8px">{horario_atual.strftime('%d/%m %Hh%Mm')}&nbsp;{runningOn} 
     </span></span></p></body>''', unsafe_allow_html=True)
     
-    st.write()
-    
     with slot_form.form(key='inputs'):
         st.write('Informe seu CEP com 5 dígitos, há quanto tempo a informação dos locais foi atualizado e a vacina que você está procurando:')
         col1,col2,col3 = st.columns(3)
