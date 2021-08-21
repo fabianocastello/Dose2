@@ -162,7 +162,7 @@ def run():
                         unsafe_allow_html=True)
                         
     with slot_expandRest.expander(
-        f'Demais locais ordenados por proximidade do CEP {cep2search}', expanded=False): 
+        f'Demais locais ordenados por proximidade ao CEP {cep2search}', expanded=False): 
         for index,row in df[5:].iterrows():
             st.markdown(f"""{show_local(df.loc[index])}""",
                         unsafe_allow_html=True)
