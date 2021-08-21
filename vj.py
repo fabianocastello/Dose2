@@ -152,8 +152,6 @@ def run():
         df = df[df.keep==True].reset_index(drop=True)
     else:
         st.stop()
-        
-        
     
     with slot_expand5.expander(
         f'5 locais mais próximos do CEP {cep2search}', expanded=True): 
@@ -187,7 +185,7 @@ def registro(remarks=None):
     
 import streamlit as st 
 try: st.set_page_config(
-        page_title='Filômetro "Plus"',
+        page_title='💉 Cadê a minha segunda dose? 😭"',
         initial_sidebar_state="collapsed",
         layout="wide")
 except: pass
