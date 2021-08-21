@@ -219,13 +219,13 @@ def update_df():
         if os.path.isfile('./Data/GeoEquip.pkl'):
             geo = pd.read_pickle(r'./Data/GeoEquip.pkl')
         else:
-            r = requests.get(urlcep5)
+            r = requests.get(urlgeo)
             with open(f'./Data/GeoEquip.pkl', 'wb') as fout:
                 fout.write(r.content)
                 geo = pd.read_pickle(r'./Data/GeoEquip.pkl')
 
         if update_from_net:
-            r = requests.get(urlgeo)
+            r = requests.get(urltxt)
             with open(f'./Data/last.txt', 'wb') as fout:
                 fout.write(r.content)
         with open(f'./Data/last.txt', 'r') as fout:
@@ -235,13 +235,11 @@ def update_df():
                             .astimezone(tz.gettz('America/Sao_Paulo'))
             
         if update_from_net:
-            r = requests.get(urltxt)
+            r = requests.get(urlpkl)
             with open(f'./Data/last.pkl', 'wb') as fout:
                 fout.write(r.content)
         df = pd.read_pickle('./Data/last.pkl')
         df = df.merge(geo, on='equipamento', how='left')
-        # df.rename({'equipamento': 'local',
-                   # 'crs'        : 'zona',},axis=1,inplace=True)
         df['ativo'] = df['status_fila'].apply(
             lambda x: x not in
             ['NÃO FUNCIONANDO',
