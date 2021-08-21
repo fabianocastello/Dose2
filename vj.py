@@ -30,8 +30,6 @@ if is_local:
     horario_atual = datetime.now()
 else:
     horario_atual = datetime.now() - timedelta(hours=3)
-
-
  
 global running_date
 running_date = horario_atual.strftime("%d-%m-%Y %Hh%Mm")
@@ -65,30 +63,38 @@ def run():
     slot_dispair    = st.empty()
     
     image = Image.open('BannerVJ.jpg')
-    st.image(image,use_column_width='always'  )  
+    col11,col12,col13 = st.columns([1,6,1])
+    with col12:
+        st.image(image,use_column_width='auto'  )  
     
-    st.markdown(f'''<body>
-    <p style="padding-top:0px;font-size:18px;line-height:18px"><span style="font-size:16px;line-height:16px">Desenvolvido por Fabiano Castello,<br>Cientista de Dados @cDataLab<br></span><span style="padding-top:0px;font-size:12px;line-height:12px"><span style="font-size:12px;line-height:12px">
-    <a href="http://www.linkedin.com/in/fabianocastello"
-    target="_blank">LinkedIn</a>, 
-    <a href="http://www.fabianocastello.com.br"
-    target="_blank">www.fabianocastello.com.br</a>, 
-    <a href="http://www.cdatalab.com.br"
-    target="_blank">www.cdatalab.com.br</a>, 
-    </span></span></p></body>''', unsafe_allow_html=True)
-    
-    st.markdown(f'''<body>
-    <p style="padding-top:0px;font-size:14px;line-height:14px"><span style="font-size:14px;line-height:14px">Agradecimentos ao meu amigo 
-    <a href="http://www.linkedin.com/in/marciorf"
-    target="_blank">Márcio Francisco</a>. 
-    </span></span></p></body>''', unsafe_allow_html=True)
+        st.markdown(f'''<body>
+        <p style="padding-top:0px;font-size:18px;line-height:18px"><span style="font-size:16px;line-height:16px">Desenvolvido por Fabiano Castello,<br>Cientista de Dados @cDataLab<br></span><span style="padding-top:0px;font-size:12px;line-height:12px"><span style="font-size:12px;line-height:12px">
+        <a href="http://www.linkedin.com/in/fabianocastello"
+        target="_blank">LinkedIn</a>, 
+        <a href="http://www.fabianocastello.com.br"
+        target="_blank">www.fabianocastello.com.br</a>, 
+        <a href="http://www.cdatalab.com.br"
+        target="_blank">www.cdatalab.com.br</a>, 
+        </span></span></p></body>''', unsafe_allow_html=True)
+        
+        st.markdown(f'''<body>
+        <p style="padding-top:0px;font-size:12px;line-height:12px"><span style="font-size:12px;line-height:12px">Estou buscando um patrocinador para infraestrutura escalável. Tem interesse? Mande uma&nbsp; 
+        <a href="mailto:fabianocastello@gmail.com?subject=Patrocínio%20Dose2" >mensagem</a>. 
+        </span></span></p></body>''', unsafe_allow_html=True)
+        
+        st.markdown(f'''<body>
+        <p style="padding-top:0px;font-size:14px;line-height:14px"><span style="font-size:14px;line-height:14px">Agradecimentos ao meu amigo 
+        <a href="http://www.linkedin.com/in/marciorf"
+        target="_blank">Márcio Francisco</a>. 
+        </span></span></p></body>''', unsafe_allow_html=True)
 
-    st.markdown(f'''<body>
-    <p style="padding-top:0px;font-size:8px;line-height:8px"><span style="font-size:8px;line-height:8px">{horario_atual.strftime('%d/%m %Hh%Mm')}&nbsp;{runningOn} 
-    </span></span></p></body>''', unsafe_allow_html=True)
+        st.markdown(f'''<body>
+        <p style="padding-top:0px;font-size:8px;line-height:8px"><span style="font-size:8px;line-height:8px">{horario_atual.strftime('%d/%m %Hh%Mm')}&nbsp;{runningOn} 
+        </span></span></p></body>''', unsafe_allow_html=True)
     
     with slot_form.form(key='inputs'):
         st.write('Informe seu CEP com 5 dígitos, há quanto tempo a informação dos locais foi atualizado e a vacina que você está procurando:')
+        
         col1,col2,col3 = st.columns(3)
 
         with col1:
@@ -294,7 +300,7 @@ def update_df():
         return(False, pd.DataFrame, 'N/A', cep, geo)
 
 global df, cep, geo
-with st.spinner('Atualizando dados. Aguarde menos de 1 minuto!'):
+with st.spinner('Atualizando dados. Aguarde alguns segundos!'):
     status, df,update, cep, geo = update_df() 
     
 print(status, update)
@@ -394,16 +400,13 @@ def show_local(r):
 sharing_message = """
 <body><p style="font-size:14px;line-height:16px">Curtiu? Compartilhe!</span>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<a href="https://www.facebook.com/sharer/sharer.php?title=Cade+minha+segunda+dose&u=http://www.fabianocastello.com.br"
+<a href="https://www.facebook.com/sharer/sharer.php?title=Cade+minha+segunda+dose&u=http://www.fabianocastello.com.br/dose2/"
 style="text-decoration:none" target="_blank"
 class="fa fa-facebook"> </a>&nbsp;
-<a href="https://twitter.com/intent/tweet?text=Cadê+minha+segunda+dose&url=http:www.fabianocastello.com.br" 
+<a href="https://twitter.com/intent/tweet?text=Cadê+minha+segunda+dose&url=http:www.fabianocastello.com.br/dose2/" 
 style="text-decoration:none" target="_blank"
 class="fa fa-twitter"></a>&nbsp;
-<a href="https://www.linkedin.com/shareArticle?title=Cade+minha+segunda+dose%3F&url=http:www.fabianocastello.com.br" 
-style="text-decoration:none" target="_blank"
-class="fa fa-linkedin"></a>&nbsp;
-<a href="whatsapp://send?text=Cade+minha+segunda+dose%3F http:www.fabianocastello.com.br" 
+<a href="whatsapp://send?text=Cade+minha+segunda+dose%3F http://www.fabianocastello.com.br/dose2/" 
 style="text-decoration:none" target="_blank"
 class="fa fa-whatsapp"></a>
 </p></body>
