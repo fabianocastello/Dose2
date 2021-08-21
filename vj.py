@@ -202,6 +202,7 @@ else:
     urlcep5  = st.secrets["urlcep5"]
     urlgeo   = st.secrets["urlgeo"]
     
+############################# UPDATE DATA
 def update_df():
     if True: #try:
         if not os.path.exists('./Data'):
@@ -224,7 +225,7 @@ def update_df():
                 geo = pd.read_pickle(r'./Data/GeoEquip.pkl')
 
         if update_from_net:
-            r = requests.get(urlpkl)
+            r = requests.get(urlgeo)
             with open(f'./Data/last.txt', 'wb') as fout:
                 fout.write(r.content)
         with open(f'./Data/last.txt', 'r') as fout:
