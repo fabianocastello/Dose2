@@ -400,13 +400,13 @@ def show_local(r):
 sharing_message = """
 <body><p style="font-size:14px;line-height:16px">Curtiu? Compartilhe!</span>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<a href="https://www.facebook.com/sharer/sharer.php?title=Cade+minha+segunda+dose&u=http://www.fabianocastello.com.br/dose2/"
+<a href="https://www.facebook.com/sharer/sharer.php?title=Cade+minha+segunda+dose&u=https://www.fabianocastello.com.br/dose2/"
 style="text-decoration:none" target="_blank"
 class="fa fa-facebook"> </a>&nbsp;
-<a href="https://twitter.com/intent/tweet?text=Cadê+minha+segunda+dose&url=http:www.fabianocastello.com.br/dose2/" 
+<a href="https://twitter.com/intent/tweet?text=Cadê+minha+segunda+dose&url=https://www.fabianocastello.com.br/dose2/" 
 style="text-decoration:none" target="_blank"
 class="fa fa-twitter"></a>&nbsp;
-<a href="whatsapp://send?text=Cade+minha+segunda+dose%3F http://www.fabianocastello.com.br/dose2/" 
+<a href="whatsapp://send?text=Cade+minha+segunda+dose%3F https://www.fabianocastello.com.br/dose2/" 
 style="text-decoration:none" target="_blank"
 class="fa fa-whatsapp"></a>
 </p></body>
