@@ -62,7 +62,6 @@ def run():
 
     slot_expand5    = st.empty()
     slot_expandRest = st.empty()
-    slot_mensagem    = st.empty()
     slot_dispair    = st.empty()
     
     image = Image.open('BannerVJ.jpg')
@@ -104,7 +103,7 @@ def run():
                 optsDF.append(value)
                 opts.append(value[2:])
                 choices.append(index)
-            choice = st.radio("", opts)
+            choice = st.radio("", opts, index=len(opts)-1)
         with col3:
             coronavac   = st.checkbox('Coronavac'  , value=True)
             astrazeneca = st.checkbox('Astra-Zeneca'  , value=True)
@@ -165,8 +164,6 @@ def run():
             st.markdown(f"""{show_local(df.loc[index])}""",
                         unsafe_allow_html=True)
                         
-    slot_mensagem.write(f'De acordo com as opções selecionadas foram  considerados {df.shape[0]} locais, com a seguinte disponibilidade: {c if c1>0 else ""} {a if a1>0 else ""} {p if p1>0 else ""}. Informações atualizadas em {last}.')
-
     with slot_dispair.expander(f'Desesperado? Veja todos os locais sem fila, com todas as vacinas, ordenados pela atualização mais recente.', expanded=False): 
         for index,row in dsp.iterrows():
             st.markdown(f"""{show_local(dsp.loc[index])}""",
