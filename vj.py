@@ -77,13 +77,18 @@ def run():
     <a href="http://www.cdatalab.com.br"
     target="_blank">www.cdatalab.com.br</a>, 
     </span></span></p></body>''', unsafe_allow_html=True)
+    
     st.markdown(f'''<body>
     <p style="padding-top:0px;font-size:14px;line-height:14px"><span style="font-size:14px;line-height:14px">Agradecimentos ao meu amigo 
     <a href="http://www.linkedin.com/in/marciorf"
     target="_blank">Márcio Francisco</a>. 
     </span></span></p></body>''', unsafe_allow_html=True)
+
+    st.markdown(f'''<body>
+    <p style="padding-top:0px;font-size:8px;line-height:8px"><span style="font-size:8px;line-height:8px">{horario_atual.strftime('%d/%m %Hh%Mm')}&nbsp;{runningOn} 
+    </span></span></p></body>''', unsafe_allow_html=True)
     
-    st.write(horario_atual.strftime('%d/%m %Hh%Mm'))
+    st.write()
     
     with slot_form.form(key='inputs'):
         st.write('Informe seu CEP com 5 dígitos, há quanto tempo a informação dos locais foi atualizado e a vacina que você está procurando:')
