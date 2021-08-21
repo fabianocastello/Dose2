@@ -1,5 +1,4 @@
-# Dose2
- Cadê minha segunda dose?
+# Cadê minha segunda dose?
  
 💉 A PMSP criou o site De Olho na Fila para que os paulistanos possam checar quais postos estão funcionando e quais vacinas estão disponíveis. Porém, para saber aonde você acha a segunda dose da sua vacina, é necessário verificar local por local, um por um! Uma trabalheira! Esta página ajuda os usuários a verificar qual vacina está disponível no local mais próximo do CEP informado. Vale apenas para CEPs da cidade de São Paulo.
 
