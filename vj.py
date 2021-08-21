@@ -6,7 +6,6 @@ warnings.simplefilter(action='ignore')
 import socket
 import os
 import os.path
-import pickle5 as pickle
 
 import time
 from PIL import Image
