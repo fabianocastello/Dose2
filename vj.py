@@ -10,7 +10,6 @@ import os.path
 import time
 from PIL import Image
 from datetime import datetime
-runningOn =  socket.gethostname()
 import requests
 from random import randrange
 from glob import glob
@@ -20,11 +19,22 @@ from dateutil import tz
 
 from datetime import time
 from datetime import date
+from datetime import timedelta
 
 update_from_net = True
+
+runningOn =  socket.gethostname()
+is_local = socket.gethostname() in 'LENOVO18 MAC18'
+
+if is_local:
+    horario_atual = datetime.now()
+else:
+    horario_atual = datetime.now() - timedelta(hours=3)
+
+
  
 global running_date
-running_date = datetime.now().strftime("%d-%m-%Y %Hh%Mm")
+running_date = horario_atual.strftime("%d-%m-%Y %Hh%Mm")
 print('*'*40)
 
 def run():
@@ -72,7 +82,9 @@ def run():
     <a href="http://www.linkedin.com/in/marciorf"
     target="_blank">Márcio Francisco</a>. 
     </span></span></p></body>''', unsafe_allow_html=True)
-
+    
+    st.write(horario_atual.strftime('%d/%m %Hh%Mm'))
+    
     with slot_form.form(key='inputs'):
         st.write('Informe seu CEP com 5 dígitos, há quanto tempo a informação dos locais foi atualizado e a vacina que você está procurando:')
         col1,col2,col3 = st.columns(3)
@@ -204,7 +216,7 @@ else:
     
 ############################# UPDATE DATA
 def update_df():
-    if True: #try:
+    try:
         if not os.path.exists('./Data'):
             os.makedirs('./Data')
     
@@ -250,7 +262,7 @@ def update_df():
         df.drop(['ativo'], axis = 1, inplace = True)
         df['update'] = df['data_hora'].apply(lambda x: datetime.strptime(x[:19],'%Y-%m-%d %H:%M:%S'))
 
-        df['slot']  = df['update'].apply(lambda x: datetime.now() - x)
+        df['slot']  = df['update'].apply(lambda x: horario_atual - x)
         df['slotM'] = df['slot'].apply(lambda x: int(x.total_seconds()/60))
         df['slotT'] = df['slotM'].apply(
             lambda x: f'{x}m'    if x <= 60    else
@@ -278,10 +290,10 @@ def update_df():
 
         df.reset_index(drop=True, inplace=True)
         return(True, df,update, cep, geo)
-    # except Exception as e:
-        # print(str(e))
-        # registro(str(e))
-        # return(False, pd.DataFrame, 'N/A', cep, geo)
+    except Exception as e:
+        print(str(e))
+        registro(str(e))
+        return(False, pd.DataFrame, 'N/A', cep, geo)
 
 global df, cep, geo
 with st.spinner('Atualizando dados. Aguarde menos de 1 minuto!'):
