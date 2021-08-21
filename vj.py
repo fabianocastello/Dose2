@@ -6,6 +6,8 @@ warnings.simplefilter(action='ignore')
 import socket
 import os
 import os.path
+import pickle5 as pickle
+
 import time
 from PIL import Image
 from datetime import datetime
@@ -31,8 +33,7 @@ def run():
     global df, cep, geo
     postos = df.shape[0]
     cep2seach = '01000'
-    # df  = update_dist(df,cep2seach)
-    #registro()
+    registro()
     st.markdown(f'''<body>
     <p style="padding-top:0px;font-size:30px;line-height: 32px"><b>💉CADÊ MINHA SEGUNDA DOSE?</b><br><span style="font-size: 10pt;line-height: 10px"><b><i>by</i> Fabiano Castello, cientista de dados @cDataLab</b><span style="font-size: 8pt;line-height: 8px"><br>(contato e outras informações no final da página)</span></span></p></body>''', unsafe_allow_html=True)
     
@@ -203,7 +204,7 @@ else:
     urlgeo   = st.secrets["urlgeo"]
     
 def update_df():
-    try:
+    if True: #try:
         if not os.path.exists('./Data'):
             os.makedirs('./Data')
     
@@ -279,16 +280,16 @@ def update_df():
 
         df.reset_index(drop=True, inplace=True)
         return(True, df,update, cep, geo)
-    except Exception as e:
-        print(str(e))
-        registro(str(e))
-        return(False, pd.DataFrame, 'N/A', cep, geo)
+    # except Exception as e:
+        # print(str(e))
+        # registro(str(e))
+        # return(False, pd.DataFrame, 'N/A', cep, geo)
 
 global df, cep, geo
 with st.spinner('Atualizando dados. Aguarde menos de 1 minuto!'):
     status, df,update, cep, geo = update_df() 
     
-print(status, update, )
+print(status, update)
 if not status:
     st.error("Erro carregando dados. Pressione F5 para tentar novamente")
     st.stop()

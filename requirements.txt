@@ -7,3 +7,4 @@ Pillow
 openpyxl
 unidecode
 lxml
+pip==21.2.4
