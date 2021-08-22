@@ -45,7 +45,7 @@ def run():
     <p style="padding-top:0px;font-size:30px;line-height: 32px"><b>💉CADÊ MINHA SEGUNDA DOSE?</b><br><span style="font-size: 10pt;line-height: 10px"><b><i>by</i> Fabiano Castello, cientista de dados @cDataLab</b><span style="font-size: 8pt;line-height: 8px"><br>(contato e outras informações no final da página)</span></span></p></body>''', unsafe_allow_html=True)
     
     with st.expander('Primeira vez por aqui? Leia-Me!', expanded=False):
-        st.write('💉 A PMSP criou o site De Olho na Fila para que os paulistanos possam checar quais postos estão funcionando e quais vacinas estão disponíveis. **Porém**, para saber aonde você acha a segunda dose da sua vacina, é necessário verificar local por local, um por um! Uma trabalheira! Esta página ajuda os usuários a verificar qual vacina está disponível no local mais próximo do CEP informado. Vale apenas para CEPs da cidade de São Paulo.')
+        st.write('💉 A PMSP criou o site De Olho na Fila para que os paulistanos possam checar quais postos estão funcionando e quais vacinas estão disponíveis. **Porém**, para saber aonde você acha a segunda dose da sua vacina é necessário verificar local por local, um por um! Uma trabalheira! Esta página ajuda os usuários a verificar qual vacina está disponível no local mais próximo do CEP informado. Vale apenas para CEPs da cidade de São Paulo.')
         st.write('💉 Este app é voluntário, totalmente gratuito e não é vinculado a PMSP de nenhuma forma. A ideia nasceu porque eu passei pela dor de ter que achar a minha segunda dose. Fui obrigado a ir a vários locais.')
         st.write(f'⚠️ Existem duas informações sobre atualização. Uma é o momento em que os dados foram coletados do site da prefeitura (que é {last}), a outra é, para cada local de vacinação, quando foi feita a última atualização (depende de cada local)') 
         st.write(f'⚠️ O site da PMSP não fornece horários de funcionamento de cada local, que podem variar. Sugiro verificar os horários de funcionamento antes de sair.') 
@@ -93,7 +93,7 @@ def run():
         </span></span></p></body>''', unsafe_allow_html=True)
     
     with slot_form.form(key='inputs'):
-        st.write('Informe seu CEP com 5 dígitos, há quanto tempo a informação dos locais foi atualizado e a vacina que você está procurando:')
+        st.write('Informe seu CEP com 5 dígitos, há quanto tempo a informação dos locais foi atualizada e a vacina que você está procurando:')
         
         col1,col2,col3 = st.columns(3)
 
@@ -291,7 +291,8 @@ def update_df():
         df['disp'] = df['coronavac'   ].apply(lambda x: 'c' if x=='1' else '')+\
              df['astrazeneca' ].apply(lambda x: 'a' if x=='1' else '')+\
              df['pfizer'      ].apply(lambda x: 'p' if x=='1' else '')
-
+        df['update_hoje'] = df['update'].apply(lambda x: True 
+                    if str(x)[:10]==str(horario_atual)[:10] else False)
         df.reset_index(drop=True, inplace=True)
         return(True, df,update, cep, geo)
     except Exception as e:
@@ -303,7 +304,7 @@ global df, cep, geo
 with st.spinner('Atualizando dados. Aguarde alguns segundos!'):
     status, df,update, cep, geo = update_df() 
     
-print(status, update)
+print(update)
 if not status:
     st.error("Erro carregando dados. Pressione F5 para tentar novamente")
     st.stop()
@@ -378,10 +379,15 @@ def show_local(r):
     eq_maps = trata_eq(r['equipamento']).replace(' ','+')+'+São+Paulo+SP'
     eq_waze = trata_eq(r['equipamento']).replace(' ','%20')+'%20São%20Paulo%20SP'
     eq_goog = 'horário+'+trata_eq(r['equipamento']).replace(' ','+')
+    warn_update = '<span></span>' if r['update_hoje'] else\
+                    """<br><span style="color:#F03A17;font-size:10px">
+                    &nbsp;&nbsp;&nbsp;<b>⚠️⚠️⚠️Este local não foi atualizado hoje.
+                    Provavelmente não está em funcionamento. Verifique!</b></span>"""
     string =f'''
         <body><p style="font-size:14px;line-height: 16px">
-        <b>{r['equipamento']} - {r['tipo_posto']} ({dist}km)</b><br>
-        <span style="font-size:12px;">
+        <b>{r['equipamento']} - {r['tipo_posto']} ({dist}km)</b>
+        {warn_update}
+        <br><span style="font-size:12px;">
         &nbsp;&nbsp;&nbsp;{fila} - atualizado há {r['slotT2']})<br>
         &nbsp;&nbsp;&nbsp;vacinas: {' ; '.join(vacs)}</span><br>
         <span style="font-size:10px;">
