@@ -381,7 +381,7 @@ def show_local(r):
     eq_goog = 'horário+'+trata_eq(r['equipamento']).replace(' ','+')
     warn_update = '<span></span>' if r['update_hoje'] else\
                     """<br><span style="color:#F03A17;font-size:10px">
-                    &nbsp;&nbsp;&nbsp;<b>⚠️⚠️⚠️Este local não foi atualizado hoje.
+                    &nbsp;&nbsp;&nbsp;<b>⚠️⚠️⚠️ Este local não foi atualizado hoje.
                     Provavelmente não está em funcionamento. Verifique!</b></span>"""
     string =f'''
         <body><p style="font-size:14px;line-height: 16px">
