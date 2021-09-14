@@ -9,7 +9,7 @@ import os.path
 
 import time
 from PIL import Image
-from datetime import datetime
+from datetime import datetime 
 import requests
 from random import randrange
 from glob import glob
@@ -388,7 +388,7 @@ def show_local(r):
         <b>{r['equipamento']} - {r['tipo_posto']} ({dist}km)</b>
         {warn_update}
         <br><span style="font-size:12px;">
-        &nbsp;&nbsp;&nbsp;{fila} - atualizado há {r['slotT2']})<br>
+        &nbsp;&nbsp;&nbsp;{fila} - atualizado há {r['slotT2']}<br>
         &nbsp;&nbsp;&nbsp;vacinas: {' ; '.join(vacs)}</span><br>
         <span style="font-size:10px;">
         &nbsp;&nbsp;&nbsp;{r['endereco']} ({r['distrito']})</span><br></span>
