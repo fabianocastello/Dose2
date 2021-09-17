@@ -78,9 +78,9 @@ def run():
         </span></span></p></body>''', unsafe_allow_html=True)
         
         st.markdown(f'''<body>
-        <p style="padding-top:0px;font-size:16px;line-height:16px"><span style="font-size:16px;line-height:16px">Esta aplicação é mantida com apoio da 
+        <p style="padding-top:0px;font-size:20px;line-height:20px"><span style="font-size:20px;line-height:20px"><b>Esta aplicação é mantida com apoio da 
         <a href="https://qmax.com.br/site/" >Q-Max do Brasil</a> e da 
-        <a href="https://dpo3.com.br" >DPO3</a>. 
+        <a href="https://dpo3.com.br" >DPO3</a>. </b>
         </span></span></p></body>''', unsafe_allow_html=True)
         
         st.markdown(f'''<body>
