@@ -68,7 +68,7 @@ def run():
         st.image(image,use_column_width='auto'  )  
     
         st.markdown(f'''<body>
-        <p style="padding-top:0px;font-size:18px;line-height:18px"><span style="font-size:16px;line-height:16px">Desenvolvido por Fabiano Castello,<br>Cientista de Dados @cDataLab<br></span><span style="padding-top:0px;font-size:12px;line-height:12px"><span style="font-size:12px;line-height:12px">
+        <p style="padding-top:0px;font-size:18px;line-height:18px"><span style="font-size:14px;line-height:14px">Desenvolvido por Fabiano Castello,<br>Cientista de Dados @cDataLab<br></span><span style="padding-top:0px;font-size:12px;line-height:12px"><span style="font-size:12px;line-height:12px">
         <a href="http://www.linkedin.com/in/fabianocastello"
         target="_blank">LinkedIn</a>, 
         <a href="http://www.fabianocastello.com.br"
@@ -78,12 +78,13 @@ def run():
         </span></span></p></body>''', unsafe_allow_html=True)
         
         st.markdown(f'''<body>
-        <p style="padding-top:0px;font-size:12px;line-height:12px"><span style="font-size:12px;line-height:12px">Estou buscando um patrocinador para infraestrutura escalável. Tem interesse? Mande uma&nbsp; 
-        <a href="mailto:fabianocastello@gmail.com?subject=Patrocínio%20Dose2" >mensagem</a>. 
+        <p style="padding-top:0px;font-size:16px;line-height:16px"><span style="font-size:16px;line-height:16px">Esta aplicação é mantida com apoio da 
+        <a href="https://qmax.com.br/site/" >Q-Max do Brasil</a> e da 
+        <a href="https://dpo3.com.br" >DPO3</a>. 
         </span></span></p></body>''', unsafe_allow_html=True)
         
         st.markdown(f'''<body>
-        <p style="padding-top:0px;font-size:14px;line-height:14px"><span style="font-size:14px;line-height:14px">Agradecimentos ao meu amigo 
+        <p style="padding-top:0px;font-size:10px;line-height:14px"><span style="font-size:10px;line-height:10px">Agradecimentos ao meu amigo 
         <a href="http://www.linkedin.com/in/marciorf"
         target="_blank">Márcio Francisco</a>. 
         </span></span></p></body>''', unsafe_allow_html=True)
