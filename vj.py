@@ -373,8 +373,8 @@ def show_local(r):
     dist = '<1' if r['dist'] <1 else r['dist'] if r['dist']<=15 else '>15' 
     vacs = ['<span style="color:LimeGreen">💚<b>Coronavac</b></span>' if r['coronavac']=='1' else
             '<span style="color:#F03A17">❌Coronavac</span>',
-            '<span style="color:LimeGreen">💚<b>Astrazeneca</b></span>' if r['astrazeneca']=='1' else
-            '<span style="color:#F03A17">❌Astrazeneca</span>',
+            '<span style="color:LimeGreen">💚<b>AstraZeneca</b></span>' if r['astrazeneca']=='1' else
+            '<span style="color:#F03A17">❌AstraZeneca</span>',
             '<span style="color:LimeGreen">💚<b>Pfizer</b></span>' if r['pfizer']=='1' else
             '<span style="color:#F03A17">❌Pfizer</span>']
     eq_maps = trata_eq(r['equipamento']).replace(' ','+')+'+São+Paulo+SP'
