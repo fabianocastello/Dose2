@@ -113,7 +113,7 @@ def run():
             choice = st.radio("", opts, index=len(opts)-1)
         with col3:
             coronavac   = st.checkbox('Coronavac'  , value=True)
-            astrazeneca = st.checkbox('Astra-Zeneca'  , value=True)
+            astrazeneca = st.checkbox('AstraZeneca'  , value=True)
             pfizer      = st.checkbox('Pfizer'  , value=True)
             selection = ('c' if coronavac   else '')+\
                         ('a' if astrazeneca else '')+\
